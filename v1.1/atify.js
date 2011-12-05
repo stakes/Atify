@@ -12,6 +12,9 @@ $.fn.atify = function(customOptions){
 	var options = $.extend({},$.fn.atify.defaultOptions, customOptions);
 	var html = $(this).html();
 	if (html) {
+	    if(options.links){
+		    html = html.replace(/(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim,"<a href=\"$1\">$1</a>");
+		}
 		if(options.extras) {
 			html = html.replace(/@([A-Za-z0-9_]+)/gi,"@<a href=\"http://twitter.com/$1\">$1</a>(<a class=\"mention\" href=\"http://twitter.com/?status=%40$1\">m</a>,<a class=\"send_dm\" href=\"http://twitter.com/direct_messages/create/$1\">d</a>)");
 		} else {
@@ -26,5 +29,6 @@ $.fn.atify = function(customOptions){
 	
 $.fn.atify.defaultOptions = {
 	'hashtag': false,
-	'extras': false
+	'extras': false,
+	'links': false,
 }
