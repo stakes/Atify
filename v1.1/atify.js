@@ -13,13 +13,14 @@ $.fn.atify = function(customOptions){
 	var html = $(this).html();
 	if (html) {
 	    if(options.links){
-		    html = html.replace(/(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim,"<a href=\"$1\">$1</a>");
+		    html = html.replace(/(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi,"<a href=\"$1\">$1</a>");
 		}
 		if(options.extras) {
 			html = html.replace(/@([A-Za-z0-9_]+)/gi,"@<a href=\"http://twitter.com/$1\">$1</a>(<a class=\"mention\" href=\"http://twitter.com/?status=%40$1\">m</a>,<a class=\"send_dm\" href=\"http://twitter.com/direct_messages/create/$1\">d</a>)");
 		} else {
 			html = html.replace(/@([A-Za-z0-9_]+)/gi,"@<a href=\"http://twitter.com/$1\">$1</a>");
 		}
+
 		if(options.hashtag){
 		    html = html.replace(/#([A-Za-z0-9_-]+)/gi,"<a href=\"http://twitter.com/search?q=%22$1%22\">#$1</a>");
 		}
